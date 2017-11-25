@@ -4,15 +4,25 @@
     <meta charset="utf-8">
     <title>Cryptogram Solver</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="solver.js" type="text/javascript"></script>
 
     <script type="text/javascript">
+
       $(document).ready(function() {
         $("#submitbtn").on( "click", function(event) {
+
           event.preventDefault();
-          solvePuzzle();
+
+          $.post("solver.php",{
+              ciphertext: $("#ciphertext").val()
+          },
+          function(data, status){
+              $('.plaintext').html(data);
+          });
+
         });
+
       });
+
     </script>
 
   </head>
@@ -24,8 +34,6 @@
     <ol>
       <li>Enter in your text in the text field as well as any letters provided in the problem.</li>
       <li>Click "Decrypt!"</li>
-      <li>Lock in any letters or words that you think are correct.</li>
-      <li>Continue decrypting/locking until you have the answer.</li>
     </ol>
 
 
