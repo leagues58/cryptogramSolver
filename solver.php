@@ -1,7 +1,11 @@
 <?php
 
+	require __DIR__.'/db_conn.php';
+
+
 	$arrCipher = [];
 	$strPlainText = $_POST['ciphertext'];
+	$db_conn = database_connection();
 
 	// load the input ciphertext into an array
 	$arrCipher = convertTextToArray($_POST['ciphertext']);
